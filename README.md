@@ -19,7 +19,7 @@ The simplest library for multiple choices in Angular.
 
 **.component**
 
-``` ts
+``` js
 choices: ChoiceModel[] = [
     { title: 'Angular', show: false },
     { title: 'React', show: false },
@@ -32,7 +32,7 @@ choices: ChoiceModel[] = [
 
 **.app.module**
 
-``` ts
+``` js
 import { Ng2ChoicesComponent } from './ng2-choices/build';
 
 @NgModule({

@@ -1,3 +1,4 @@
+import { ChoiceOptions } from './@interfaces/option.interface';
 import { ChoiceModel } from './@models/choice.model';
 import {
   Component,
@@ -12,8 +13,8 @@ import {
   selector: 'ng2-choices',
   template: `
   <div class="choice-main">
-    <span (click)="toggle(choice)" *ngFor="let choice of choices;let i = index"
-    class="choice" [ngClass]="{'show':choice.show,'not-show':!choice.show}" >
+    <span (click)="toggle(choice,i)" *ngFor="let choice of choices;let i = index"
+    class="choice" [ngClass]="{'show':choice.checked,'not-show':!choice.checked}" >
       <img *ngIf="choice.show" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDI2IDI2IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNiAyNiIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CiAgPHBhdGggZD0ibS4zLDE0Yy0wLjItMC4yLTAuMy0wLjUtMC4zLTAuN3MwLjEtMC41IDAuMy0wLjdsMS40LTEuNGMwLjQtMC40IDEtMC40IDEuNCwwbC4xLC4xIDUuNSw1LjljMC4yLDAuMiAwLjUsMC4yIDAuNywwbDEzLjQtMTMuOWgwLjF2LTguODgxNzhlLTE2YzAuNC0wLjQgMS0wLjQgMS40LDBsMS40LDEuNGMwLjQsMC40IDAuNCwxIDAsMS40bDAsMC0xNiwxNi42Yy0wLjIsMC4yLTAuNCwwLjMtMC43LDAuMy0wLjMsMC0wLjUtMC4xLTAuNy0wLjNsLTcuOC04LjQtLjItLjN6IiBmaWxsPSIjRkZGRkZGIi8+Cjwvc3ZnPgo=" />
       {{choice.title}}
     </span>
@@ -49,12 +50,28 @@ import {
   ]
 })
 export class Ng2ChoicesComponent implements OnInit {
+  // Default options
+  @Input()
+  options: ChoiceOptions = {
+    multiple: true
+  };
   @Input() choices: ChoiceModel[] = [];
   @Output() change = new EventEmitter<ChoiceModel>();
   constructor() {}
   ngOnInit() {}
-  toggle(choice: ChoiceModel) {
-    choice.show = !choice.show;
+  toggle(choice: ChoiceModel, index: number) {
+    choice.checked = !choice.checked;
     this.change.emit(choice);
+
+    // Check multiple options
+    this.unChecked(choice, index); 
+  }
+
+  private unChecked(currentChoice: ChoiceModel, index: number) {
+    this.choices.forEach((choice, i) => {
+      if (i !== index) {
+        choice.checked = false;
+      }
+    });
   }
 }
