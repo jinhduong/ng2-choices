@@ -7,6 +7,14 @@
     "build": "gulp"
   },
   "keywords": ["ng2-choices", "angular-choices"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinhduong/ng2-choices.git"
+  },
+   "bugs": {
+    "url": "https://github.com/jinhduong/ng2-choices/issues"
+  },
+  "homepage": "https://github.com/jinhduong/ng2-choices/issues#readme",
   "author": "jinhduong",
   "license": "MIT",
   "devDependencies": {
