@@ -14,7 +14,7 @@ The simplest library for multiple choices in Angular.
 
 **.html**
 ``` html
-<ng2-choices (change)="change($event)" [choices]="choices"></ng2-choices>
+<ng2-choices [options]="options" (change)="change($event)" [choices]="choices"></ng2-choices>
 ```
 
 **.component**
@@ -28,6 +28,14 @@ choices: ChoiceModel[] = [
     { title: 'Preact', show: false },
     { title: 'Aurelia', show: false }
   ];
+```
+
+**options**
+Default options
+``` js
+options = <ChoiceOptions>{
+    multiple: true
+};
 ```
 
 **.app.module**
@@ -48,6 +56,11 @@ import { Ng2ChoicesComponent } from './ng2-choices/build';
 })
 export class AppModule { }
 ```
+
+**events/ functions**
+
+`change(item)`: Will fire whenever you checked/unchecked any items.
+  - *item*: item which is checking/ un-checking.
 
 
 
