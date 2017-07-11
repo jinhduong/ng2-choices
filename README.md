@@ -1,2 +1,2 @@
 # ng2-choices
-Angular multi choices simples
+Angular2/4 multi choices simples
