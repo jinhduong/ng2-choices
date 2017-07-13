@@ -13,14 +13,17 @@ The simplest library for multiple choices in Angular.
 ## 2. Using
 
 ### **2.1 .html**
-``` html
-<ng2-choices [options]="options" (change)="change($event)" [choices]="choices"></ng2-choices>
+
+```html
+<ng2-choices [options]="options" 
+            (change)="change($event)" 
+            [choices]="choices"></ng2-choices>
 ```
 
 
 ### **2.2 .component**
 
-``` js
+```js
 choices: ChoiceModel[] = [
     { title: 'Angular', checked: false },
     { title: 'React', checked: false },
@@ -33,7 +36,7 @@ choices: ChoiceModel[] = [
 
 ### **2.3 .app.module**
 
-``` js
+```js
 import { Ng2ChoicesComponent } from './ng2-choices/build';
 
 @NgModule({
@@ -52,7 +55,8 @@ export class AppModule { }
 
 ### **options**
 Default options
-``` js
+
+```js
 options = <ChoiceOptions>{
     multiple: true
 };
