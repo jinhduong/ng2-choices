@@ -3,7 +3,7 @@
 The simplest library for multiple choices in Angular.
 
 - No dependencies
-- Modern
+- Simplest
 
 ![http://i.imgur.com/AerIXxA.png](http://i.imgur.com/AerIXxA.png)
 

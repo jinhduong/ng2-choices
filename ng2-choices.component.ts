@@ -60,7 +60,13 @@ export class Ng2ChoicesComponent implements OnInit {
   constructor() {}
   ngOnInit() {}
   toggle(choice: ChoiceModel, index: number) {
+    // If multiple is false and current choice checked is true
+    if (!this.options.multiple && choice.checked) {
+      return;
+    }
     choice.checked = !choice.checked;
+
+    // Fire change event
     this.change.emit(choice);
 
     // Check multiple options
